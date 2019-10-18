@@ -1,10 +1,11 @@
 package array2;
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Persona {
 
-    Datospersona[] datos = new Datospersona[5];
-    Scanner lectura = new Scanner(System.in);
+    int ta = Integer.parseInt(JOptionPane.showInputDialog("Digite numero de personas a las que va a tomar sus datos"));
+    Datospersona[] datos = new Datospersona[ta];
+    
 
     public Persona() {
 
@@ -14,28 +15,31 @@ public class Persona {
 
     public void mostrarMenu() {
 
-        System.out.println("Personas\n"
+        int opcion = Integer.parseInt(JOptionPane.showInputDialog("Personas\n"
                 + "1-Ingresar datos de persona\n"
                 + "2-Mostrar datos personas\n"
                 + "3-Cerrar\n"
-                + "Escoja opcion");
-
-        int opcion = lectura.nextInt();
+                + "Escoja opcion"));
         this.cargarOpcion(opcion);
     }
 
     public void leerPersona() {
 
-        System.out.println("usted ha escogido ingresar dato de persona");
+        JOptionPane.showMessageDialog(null, "Usted ha escogido ingresar datos de persona ");
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < datos.length; i++) {
             datos[i] = new Datospersona();
-            System.out.println("digite datos de persona " + i + "\n"
-                    + "Nombre");
-            datos[i].nombre = lectura.next();
             
-            System.out.println("Apellido");
-            datos[i].apellido = lectura.next();
+            int np=i+1;
+            
+            JOptionPane.showMessageDialog(null, "Digite datos de la persona #"+np);
+          
+            datos[i].nombre = JOptionPane.showInputDialog("Nombres");
+            datos[i].apellido = JOptionPane.showInputDialog("Apellidos");
+            datos[i].identificacion = JOptionPane.showInputDialog("Identificaion");
+            datos[i].telefono = JOptionPane.showInputDialog("Telefono");
+            datos[i].fecha_naci = JOptionPane.showInputDialog("Fecha de nacimiento");
+            datos[i].calcEdad();
 
         }
         this.mostrarMenu();
@@ -44,11 +48,19 @@ public class Persona {
 
     public void escribirPersona() {
 
-        for (int i = 0; i < 5; i++) {
-
-            System.out.println("los datos de la persona " + i + "\n"
-                    + "Nombre " + datos[i].nombre + "\n"
-                    + "Apellido " + datos[i].apellido);
+        for (int i = 0; i<datos.length; i++) {
+            
+           int np=i+1;
+            
+           JOptionPane.showMessageDialog(null, "los datos de la persona #" + np +" son:" );
+            
+           JOptionPane.showMessageDialog(null, "Nombre: " + datos[i].nombre + "\n"
+                    + "Apellidos: " + datos[i].apellido+"\n"
+                            + "Identificacion "+datos[i].identificacion+"\n"
+                                            + "Telefono "+datos[i].telefono+"\n"
+                                                    + "Fecha de naciento: "+datos[i].fecha_naci+"\n"
+                                                            + "Edad: "+datos[i].calcEdad());
+                                    
 
         }
     }
@@ -66,11 +78,11 @@ public class Persona {
                 break;
 
             case 3:
-                System.out.println("Usted ha finalizado el programa");
+                JOptionPane.showMessageDialog(null,"Usted ha finalizado el programa");
                 break;
 
             default:
-                System.out.println("Opcion invalida");
+                JOptionPane.showMessageDialog(null,"Opcion invalida");
 
         }
 

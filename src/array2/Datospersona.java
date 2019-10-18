@@ -1,7 +1,9 @@
 package array2;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+
 
 public class Datospersona {
     
@@ -15,6 +17,8 @@ public class Datospersona {
     public String direccion;
     public String correo_electronico;
     public String genero;
+    
+    
 
     public String getNombre() {
         return nombre;
@@ -92,21 +96,20 @@ public class Datospersona {
    
        System.out.println(this.nombre +" "+ this.apellido);
        
- }
-  
-   public int calEdad;{
-
-
-
-     /*  DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-       LocalDate dob = LocalDate.parse(this.fecha_naci,fmt);
-       LocalDate nowDate = LocalDate.now();
-       Pe1riod period = Period.between(dob, nowDate);
-       period.getYears();
-       */        
-
-}  
-
-
+ }  
+   
+   public int calcEdad(){
+        
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dob = LocalDate.parse(this.fecha_naci, fmt);
+        LocalDate nowDate = LocalDate.now();
+        Period period = Period.between(dob, nowDate);
+        return period.getYears();
+        
+    
+    
+    
+    
+    }
    
 }

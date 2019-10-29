@@ -3,6 +3,7 @@ package array2;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 
 public class Datospersona {
@@ -17,6 +18,8 @@ public class Datospersona {
     public String direccion;
     public String correo_electronico;
     public String genero;
+    
+    ArrayList<Telefonos> telefonos = new ArrayList<Telefonos>();
     
     
 

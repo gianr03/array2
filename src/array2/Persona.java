@@ -41,13 +41,13 @@ public class Persona {
             datos[i].nombre = JOptionPane.showInputDialog("Nombres");
             datos[i].apellido = JOptionPane.showInputDialog("Apellidos");
             datos[i].identificacion = JOptionPane.showInputDialog("Identificaion");
-            datos[i].telefono = JOptionPane.showInputDialog("Telefono");
+            datos[i].telefonos.add(new Telefonos("home","30035012"));
             datos[i].fecha_naci = JOptionPane.showInputDialog("Fecha de nacimiento");
             datos[i].calcEdad();
 
         }
+       
         this.mostrarMenu();
-
     }
 
     public void escribirPersona() {
@@ -60,8 +60,8 @@ public class Persona {
             
            JOptionPane.showMessageDialog(null, "Nombre: " + datos[i].nombre + "\n"
                     + "Apellidos: " + datos[i].apellido+"\n"
-                            + "Identificacion "+datos[i].identificacion+"\n"
-                                            + "Telefono "+datos[i].telefono+"\n"
+                            + "Identificacion: "+datos[i].identificacion+"\n"
+                                            + "Tipo de telefono: "+datos[i].telefonos.get(0).tipo+" "+datos[i].telefonos.get(0).telefono+"\n"
                                                     + "Fecha de naciento: "+datos[i].fecha_naci+"\n"
                                                             + "Edad: "+datos[i].calcEdad());
                                     
@@ -84,7 +84,7 @@ public class Persona {
         
         for(Object nombre: nombres){
         
-           JOptionPane.showMessageDialog(null,nombre);
+           JOptionPane.showMessageDialog(null,nombre+"\n");
         }
     }
         

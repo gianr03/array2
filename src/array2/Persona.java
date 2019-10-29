@@ -1,4 +1,7 @@
 package array2;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Persona {
@@ -18,7 +21,8 @@ public class Persona {
         int opcion = Integer.parseInt(JOptionPane.showInputDialog("Personas\n"
                 + "1-Ingresar datos de persona\n"
                 + "2-Mostrar datos personas\n"
-                + "3-Cerrar\n"
+                + "3-Lista por orden alfabetico\n"
+                + "4-Cerrar\n"
                 + "Escoja opcion"));
         this.cargarOpcion(opcion);
     }
@@ -63,7 +67,27 @@ public class Persona {
                                     
 
         }
+        this.mostrarMenu();
     }
+    
+     public void ordenarPersona(){
+        
+        List nombres = new LinkedList<>();
+        for(int i=0; i<datos.length; i++){
+            
+            nombres.add(datos[i].nombre + datos[i].apellido );
+        
+        }
+       
+        
+        Collections.sort(nombres);
+        
+        for(Object nombre: nombres){
+        
+           JOptionPane.showMessageDialog(null,nombre);
+        }
+    }
+        
 
     public void cargarOpcion(int op) {
 
@@ -76,8 +100,12 @@ public class Persona {
             case 2:
                 this.escribirPersona();
                 break;
-
+                
             case 3:
+                this.ordenarPersona();
+                break;
+
+            case 4:
                 JOptionPane.showMessageDialog(null,"Usted ha finalizado el programa");
                 break;
 

@@ -41,11 +41,26 @@ public class Persona {
             datos[i].nombre = JOptionPane.showInputDialog("Nombres");
             datos[i].apellido = JOptionPane.showInputDialog("Apellidos");
             datos[i].identificacion = JOptionPane.showInputDialog("Identificaion");
-            datos[i].telefonos.add(new Telefonos("home","30035012"));
-            datos[i].fecha_naci = JOptionPane.showInputDialog("Fecha de nacimiento");
+             
+        
+        while(true){
+            
+            datos[i].telefonos.add(new Telefonos(JOptionPane.showInputDialog("Tipo de telefono"),JOptionPane.showInputDialog("Numero")));
+            
+            i++;
+            
+            if(i==0)break;
+        
+        
+        
+        
+        }
+          datos[i].fecha_naci = JOptionPane.showInputDialog("Fecha de nacimiento");
             datos[i].calcEdad();
 
         }
+        
+       
        
         this.mostrarMenu();
     }

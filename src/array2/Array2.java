@@ -7,7 +7,7 @@ public class Array2 {
     
     public static void main(String[] args) {
         
-        Persona instancia1 = new Persona();
+        Datospersona instancia1 = new Datospersona();
        // Datospersona instancia1 = new Datospersona();
         //Scanner lectura=new Scanner(System.in);
         

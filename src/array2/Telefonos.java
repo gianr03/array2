@@ -6,30 +6,15 @@ public class Telefonos {
     
     public String tipo;
     public String telefono;
-    
-    Telefonos (String tip,String tel){
+    public boolean principal;
+    Telefonos (String tip,String tel,boolean prin){
         
         this.tipo=tip;
         this.telefono=tel;
-    
+        this.principal=prin;
     
     
     }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-    
+   
 }

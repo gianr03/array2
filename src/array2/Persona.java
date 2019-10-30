@@ -1,134 +1,118 @@
 package array2;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import javax.swing.JOptionPane;
+
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
 
 public class Persona {
-
-    int ta = Integer.parseInt(JOptionPane.showInputDialog("Digite numero de personas a las que va a tomar sus datos"));
-    Datospersona[] datos = new Datospersona[ta];
+    
+    public String nombre;
+    public String fecha_naci;
+    public String apellido;
+    public String tipo_sangre;
+    public String nacionalidad;
+    public String identificacion;
+    public String telefono;
+    public String direccion;
+    public String correo_electronico;
+    public String genero;
+    
+    ArrayList<Telefonos> telefonos = new ArrayList<Telefonos>();
+    
     
 
-    public Persona() {
-
-        this.mostrarMenu();
-
+    public String getNombre() {
+        return nombre;
     }
 
-    public void mostrarMenu() {
-
-        int opcion = Integer.parseInt(JOptionPane.showInputDialog("Personas\n"
-                + "1-Ingresar datos de persona\n"
-                + "2-Mostrar datos personas\n"
-                + "3-Lista por orden alfabetico\n"
-                + "4-Cerrar\n"
-                + "Escoja opcion"));
-        this.cargarOpcion(opcion);
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void leerPersona() {
+    public String getApellido() {
+        return apellido;
+    }
 
-        JOptionPane.showMessageDialog(null, "Usted ha escogido ingresar datos de persona ");
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 
-        for (int i = 0; i < datos.length; i++) {
-            datos[i] = new Datospersona();
-            
-            int np=i+1;
-            
-            JOptionPane.showMessageDialog(null, "Digite datos de la persona #"+np);
-          
-            datos[i].nombre = JOptionPane.showInputDialog("Nombres");
-            datos[i].apellido = JOptionPane.showInputDialog("Apellidos");
-            datos[i].identificacion = JOptionPane.showInputDialog("Identificaion");
-             
-        
-        while(true){
-            
-            datos[i].telefonos.add(new Telefonos(JOptionPane.showInputDialog("Tipo de telefono"),JOptionPane.showInputDialog("Numero")));
-            
-            i++;
-            
-            if(i==0)break;
-        
-        
-        
-        
-        }
-          datos[i].fecha_naci = JOptionPane.showInputDialog("Fecha de nacimiento");
-            datos[i].calcEdad();
+    public String getTipo_sangre() {
+        return tipo_sangre;
+    }
 
-        }
-        
+    public void setTipo_sangre(String tipo_sangre) {
+        this.tipo_sangre = tipo_sangre;
+    }
+
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getCorreo_electronico() {
+        return correo_electronico;
+    }
+
+    public void setCorreo_electronico(String correo_electronico) {
+        this.correo_electronico = correo_electronico;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+   public void printname(){
+   
+       System.out.println(this.nombre +" "+ this.apellido);
        
-       
-        this.mostrarMenu();
-    }
-
-    public void escribirPersona() {
-
-        for (int i = 0; i<datos.length; i++) {
-            
-           int np=i+1;
-            
-           JOptionPane.showMessageDialog(null, "los datos de la persona #" + np +" son:" );
-            
-           JOptionPane.showMessageDialog(null, "Nombre: " + datos[i].nombre + "\n"
-                    + "Apellidos: " + datos[i].apellido+"\n"
-                            + "Identificacion: "+datos[i].identificacion+"\n"
-                                            + "Tipo de telefono: "+datos[i].telefonos.get(0).tipo+" "+datos[i].telefonos.get(0).telefono+"\n"
-                                                    + "Fecha de naciento: "+datos[i].fecha_naci+"\n"
-                                                            + "Edad: "+datos[i].calcEdad());
-                                    
-
-        }
-        this.mostrarMenu();
-    }
+ }  
+   
+   public int calcEdad(){
+        
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dob = LocalDate.parse(this.fecha_naci, fmt);
+        LocalDate nowDate = LocalDate.now();
+        Period period = Period.between(dob, nowDate);
+        return period.getYears();
+        
     
-     public void ordenarPersona(){
-        
-        List nombres = new LinkedList<>();
-        for(int i=0; i<datos.length; i++){
-            
-            nombres.add(datos[i].nombre + datos[i].apellido );
-        
-        }
-       
-        
-        Collections.sort(nombres);
-        
-        for(Object nombre: nombres){
-        
-           JOptionPane.showMessageDialog(null,nombre+"\n");
-        }
+    
+    
+    
     }
-        
-
-    public void cargarOpcion(int op) {
-
-        switch (op) {
-
-            case 1:
-                this.leerPersona();
-                break;
-
-            case 2:
-                this.escribirPersona();
-                break;
-                
-            case 3:
-                this.ordenarPersona();
-                break;
-
-            case 4:
-                JOptionPane.showMessageDialog(null,"Usted ha finalizado el programa");
-                break;
-
-            default:
-                JOptionPane.showMessageDialog(null,"Opcion invalida");
-
-        }
-
-    }
-
+   
 }
